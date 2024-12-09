@@ -658,6 +658,12 @@ img {
     top: 275px;
 }
 
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .atention_text {
     z-index: 1000;
     position: absolute;
