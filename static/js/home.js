@@ -211,7 +211,35 @@ document.addEventListener('DOMContentLoaded', function () {
             const music_area = `<div class="spotify_box" id="sb">
                                     <iframe src="https://open.spotify.com/embed/track/7ovUcF5uHTBRzUpB6ZOmvt?utm_source=generator" width="100%"
                                         height="152" frameborder="0" allowfullscreen=""
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="music_box">
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="0">
+                                    </iframe>
+                                    <iframe src="https://open.spotify.com/embed/track/0T4AitQuq8IJhWBWuZwkFA?utm_source=generator" width="100%"
+                                        height="152" frameborder="0" allowfullscreen=""
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="1" hidden>
+                                    </iframe>
+                                    <iframe src="https://open.spotify.com/embed/track/3dPtXHP0oXQ4HCWHsOA9js?utm_source=generator" width="100%"
+                                        height="152" frameborder="0" allowfullscreen=""
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="2" hidden>
+                                    </iframe>
+                                    <iframe src="https://open.spotify.com/embed/track/62Lv9WcrfzJqhvYDbilJy3?utm_source=generator" width="100%"
+                                        height="152" frameborder="0" allowfullscreen=""
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="3" hidden>
+                                    </iframe>
+                                    <iframe src="https://open.spotify.com/embed/track/5ptl2PXkiSth54HCuGO7vN?utm_source=generator" width="100%"
+                                        height="152" frameborder="0" allowfullscreen=""
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="4" hidden>
+                                    </iframe>
+                                    <iframe src="https://open.spotify.com/embed/track/5NxmDq0yXBYGfCbMqvIXuv?utm_source=generator" width="100%"
+                                        height="152" frameborder="0" allowfullscreen=""
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="5" hidden>
+                                    </iframe>
+                                    <iframe src="https://open.spotify.com/embed/track/42lDvdAmBr7H5hLzvr882L?utm_source=generator" width="100%"
+                                        height="152" frameborder="0" allowfullscreen=""
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="6" hidden>
+                                    </iframe>
+                                    <iframe src="https://open.spotify.com/embed/track/43DrDpSiIZWEiEfsQQHoQi?utm_source=generator" width="100%"
+                                        height="152" frameborder="0" allowfullscreen=""
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="7" hidden>
                                     </iframe>
                                 </div>
                                 <div hidden id="music">0</div>`
@@ -365,28 +393,42 @@ document.addEventListener('DOMContentLoaded', function () {
             if (at) {
                 at.remove();
             }
+
             const now = document.getElementById('music').innerText;
-            let src_ = 0;
-            if (now === '7') {
-                document.getElementById('music').innerText = '0';
-                src_ = music_data[0];
-            } else {
-                document.getElementById('music').innerText = String(Number(now) + 1);
-                src_ = music_data[Number(now) + 1];
-            }
-            const music_area = `<iframe src="${src_}" width="100%"
-                height="152" frameborder="0" allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="music_box">
-            </iframe>`
-            const old = document.getElementById('music_box');
+            const old = document.getElementById(now);
+            const new_ = document.getElementById((Number(now) + 1) % 8);
+            console.log('old:', old, 'new:', new_)
             old.style.zIndex = '3000';
-            const spotify_box = document.getElementById('sb');
-            old.id = 'old';
+            new_.hidden = false;
             old.style.animation = 'leave_l 0.3s';
-            old.addEventListener('animationend', function () {
-                this.remove();
-                spotify_box.insertAdjacentHTML('beforeend', music_area);
-            });
+            setTimeout(function () {
+                old.style.zIndex = '2000';
+                old.hidden = true;
+                old.style.animation = 'none';
+                document.getElementById('music').innerText = String((Number(now) + 1) % 8);
+            }, 300)
+
+            // let src_ = 0;
+            // if (now === '7') {
+            //     document.getElementById('music').innerText = '0';
+            //     src_ = music_data[0];
+            // } else {
+            //     document.getElementById('music').innerText = String(Number(now) + 1);
+            //     src_ = music_data[Number(now) + 1];
+            // }
+            // const music_area = `<iframe src="${src_}" width="100%"
+            //     height="152" frameborder="0" allowfullscreen=""
+            //     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="music_box">
+            // </iframe>`
+            // const old = document.getElementById('music_box');
+            // old.style.zIndex = '3000';
+            // const spotify_box = document.getElementById('sb');
+            // old.id = 'old';
+            // old.style.animation = 'leave_l 0.3s';
+            // old.addEventListener('animationend', function () {
+            //     this.remove();
+            //     spotify_box.insertAdjacentHTML('beforeend', music_area);
+            // });
         }
     }
     function previoussong() {
@@ -395,25 +437,46 @@ document.addEventListener('DOMContentLoaded', function () {
             if (at) {
                 at.remove();
             }
-
-
             const now = document.getElementById('music').innerText;
-            let src_ = 0;
-            if (now === '0') {
+            const old = document.getElementById(now);
+            let new_ = document.getElementById(Number(now) - 1);
+            document.getElementById('music').innerText = String(Number(now) - 1);
+            if (Number(now) === 0) {
+                new_ = document.getElementById('7');
                 document.getElementById('music').innerText = '7';
-                src_ = music_data[7];
-            } else {
-                document.getElementById('music').innerText = String(Number(now) - 1);
-                src_ = music_data[Number(now) - 1];
             }
-            const music_area = `<iframe src="${src_}" width="100%"
-                height="152" frameborder="0" allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; 
-                fullscreen; picture-in-picture" id="music_box_new" style="z-index: 3000;" hidden onload="iframeLoaded()">
-            </iframe>`
+            new_.style.zIndex = '3000';
+            new_.hidden = false;
+            new_.style.animation = 'in_r 0.3s';
+            // function handleAnimationEnd() {
+            //     old.hidden = true;
+            //     new_.style.zIndex = '2000';
+            //     new_.removeEventListener('animationend', handleAnimationEnd);
+            // }
+            // new_.addEventListener('animationend', handleAnimationEnd);
+            setTimeout(function () {
+                old.hidden = true;
+                new_.style.zIndex = '2000';
+                new_.style.animation = 'none';
+                new_.removeEventListener('animationend', handleAnimationEnd);
+            }, 300)
+            // const now = document.getElementById('music').innerText;
+            // let src_ = 0;
+            // if (now === '0') {
+            //     document.getElementById('music').innerText = '7';
+            //     src_ = music_data[7];
+            // } else {
+            //     document.getElementById('music').innerText = String(Number(now) - 1);
+            //     src_ = music_data[Number(now) - 1];
+            // }
+            // const music_area = `<iframe src="${src_}" width="100%"
+            //     height="152" frameborder="0" allowfullscreen=""
+            //     allow="autoplay; clipboard-write; encrypted-media; 
+            //     fullscreen; picture-in-picture" id="music_box_new" style="z-index: 3000;" hidden onload="iframeLoaded()">
+            // </iframe>`
 
-            const spotify_box = document.getElementById('sb');
-            spotify_box.insertAdjacentHTML('beforeend', music_area);
+            // const spotify_box = document.getElementById('sb');
+            // spotify_box.insertAdjacentHTML('beforeend', music_area);
 
 
         }
