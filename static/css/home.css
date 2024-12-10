@@ -60,6 +60,7 @@ img {
     align-items: center;
     width: 100%;
     height: 100%;
+    min-height: 600px;
     position: relative;
 }
 
@@ -385,6 +386,16 @@ img {
     }
 }
 
+@keyframes akua {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(100px);
+    }
+}
+
 /* page 0 */
 
 /* slide up text */
@@ -689,4 +700,93 @@ iframe {
     height: 100px;
     animation: TourGuide 2s;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.find_me {
+    z-index: 1000;
+    position: absolute;
+    left: auto;
+    animation: TourGuide 2s;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.findme_group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.ins {
+    background-image: url(../img/ins.png);
+}
+
+.fb {
+    background-image: url(../img/fb.png);
+}
+
+.yt {
+    background-image: url(../img/yt.png);
+}
+
+.mail {
+    background-image: url(../img/mail.png);
+}
+
+.github {
+    background-image: url(../img/github.png);
+}
+
+.line {
+    background-image: url(../img/line.png);
+}
+
+.ins,
+.fb,
+.yt,
+.mail,
+.github,
+.line {
+    background-color: #e3007f;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.ins:hover,
+.fb:hover,
+.yt:hover,
+.mail:hover,
+.github:hover,
+.line:hover {
+    background-color: #d3006f;
+}
+
+.sea {
+    position: absolute;
+    top: 600px;
+    left: 0;
+}
+
+.finally_text {
+    position: absolute;
+    top: 450px;
+    left: auto;
+    font-size: 100px;
+    color: #e3007f;
+    animation: TourGuide 2s;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #fff;
 }

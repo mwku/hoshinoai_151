@@ -1,20 +1,20 @@
-let page = 0;
+let page = 7;
 let isplay = false;
 let isask = false;
 let ismusic = false;
 let playing = false;
 const audio = new Audio('./static/mp3/idol.mp3');
 audio.loop = true;
-const music_data = [
-    'https://open.spotify.com/embed/track/7ovUcF5uHTBRzUpB6ZOmvt?utm_source=generator',
-    'https://open.spotify.com/embed/track/0T4AitQuq8IJhWBWuZwkFA?utm_source=generator',
-    'https://open.spotify.com/embed/track/3dPtXHP0oXQ4HCWHsOA9js?utm_source=generator',
-    'https://open.spotify.com/embed/track/62Lv9WcrfzJqhvYDbilJy3?utm_source=generator',
-    'https://open.spotify.com/embed/track/5ptl2PXkiSth54HCuGO7vN?utm_source=generator',
-    `https://open.spotify.com/embed/track/5NxmDq0yXBYGfCbMqvIXuv?utm_source=generator`,
-    `https://open.spotify.com/embed/track/42lDvdAmBr7H5hLzvr882L?utm_source=generator`,
-    `https://open.spotify.com/embed/track/43DrDpSiIZWEiEfsQQHoQi?utm_source=generator`
-];
+// const music_data = [
+//     'https://open.spotify.com/embed/track/7ovUcF5uHTBRzUpB6ZOmvt?utm_source=generator',
+//     'https://open.spotify.com/embed/track/0T4AitQuq8IJhWBWuZwkFA?utm_source=generator',
+//     'https://open.spotify.com/embed/track/3dPtXHP0oXQ4HCWHsOA9js?utm_source=generator',
+//     'https://open.spotify.com/embed/track/62Lv9WcrfzJqhvYDbilJy3?utm_source=generator',
+//     'https://open.spotify.com/embed/track/5ptl2PXkiSth54HCuGO7vN?utm_source=generator',
+//     `https://open.spotify.com/embed/track/5NxmDq0yXBYGfCbMqvIXuv?utm_source=generator`,
+//     `https://open.spotify.com/embed/track/42lDvdAmBr7H5hLzvr882L?utm_source=generator`,
+//     `https://open.spotify.com/embed/track/43DrDpSiIZWEiEfsQQHoQi?utm_source=generator`
+// ];
 function playAudio() {
     audio.play().then(() => {
         document.removeEventListener('pointerdown', playAudio);
@@ -266,13 +266,73 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 2000);
             };
         }
+        else if (page === 8) {
+            const find_me = `<div class="find_me">
+                <div class="findme_group">
+                    <a href="https://www.instagram.com/hoshinoai_151/" class="ins" target="_blank"></a>
+                    <a href="https://www.facebook.com/brian.ku.353" class="fb" target="_blank"></a>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="yt" target="_blank"></a>
+                </div>
+                <div class="findme_group">
+                    <a href="mailto:kumingwei0818@gmail.com" class="mail" target="_blank"></a>
+                    <a href="https://github.com/mwku" class="github" target="_blank"></a>
+                    <a href="https://line.me/ti/p/31O4Ce56P-" class="line" target="_blank"></a>
+                </div>
+                </div>`
+            console.log('8')
+            main.insertAdjacentHTML('beforeend', find_me);
+            const tourGuideImg = new Image();
+            tourGuideImg.src = './static/img/akua.png';
+            tourGuideImg.id = 'akua';
+            tourGuideImg.alt = 'tour';
+            tourGuideImg.className = 'tour-guide';
+            tourGuideImg.onload = function () {
+                main.appendChild(tourGuideImg);
+                const text_box = CreateOneLineTextBox('今天就到這裡囉，應該沒有爛尾吧');
+                setTimeout(function () {
+                    main.insertAdjacentHTML('beforeend', text_box);
+                }, 2000);
+            };
+            setTimeout(function () {
+                const sea = new Image();
+                sea.src = './static/img/sea.png';
+                sea.id = 'sea';
+                sea.alt = 'sea';
+                sea.className = 'sea';
+                main.appendChild(sea);
+                sea.onload = function () {
+                    const akua = document.getElementById('akua');
+                    akua.style.animation = 'akua 1s cubic-bezier(0.5, 0, 1, 1)';
+                    const text_box = document.querySelector('.text-box_oneLine');
+                    text_box.style.animation = 'akua 1s cubic-bezier(0.5, 0, 1, 1)';
+                    akua.addEventListener('animationend', function () {
+                        akua.remove();
+                        text_box.remove();
+                        sea.remove();
+                    })
+                }
+            }, 6000)
+            setTimeout(function () {
+                const ft_ = `<div class="finally_text">
+                完
+            </div>`
+                main.insertAdjacentHTML('beforeend', ft_);
+                function End() {
+                    isPageChanging = false;
+                    ft.removeEventListener('animationend', handleAnimationEnd);
+                }
+                const ft = document.querySelector('.finally_text');
+                ft.addEventListener('animationend', End);
+            }, 7500)
+
+        }
     }
     function clearpageUp() {
-        const childElements = Array.from(main.children);
         const h = document.getElementById('music');
         if (h) {
             h.remove();
         }
+        const childElements = Array.from(main.children);
         let elementsToRemove = childElements.length;
         if (elementsToRemove === 0) {
             changepage();
@@ -393,11 +453,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (at) {
                 at.remove();
             }
-
             const now = document.getElementById('music').innerText;
             const old = document.getElementById(now);
             const new_ = document.getElementById((Number(now) + 1) % 8);
-            console.log('old:', old, 'new:', new_)
             old.style.zIndex = '3000';
             new_.hidden = false;
             old.style.animation = 'leave_l 0.3s';
@@ -407,28 +465,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 old.style.animation = 'none';
                 document.getElementById('music').innerText = String((Number(now) + 1) % 8);
             }, 300)
-
-            // let src_ = 0;
-            // if (now === '7') {
-            //     document.getElementById('music').innerText = '0';
-            //     src_ = music_data[0];
-            // } else {
-            //     document.getElementById('music').innerText = String(Number(now) + 1);
-            //     src_ = music_data[Number(now) + 1];
-            // }
-            // const music_area = `<iframe src="${src_}" width="100%"
-            //     height="152" frameborder="0" allowfullscreen=""
-            //     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="music_box">
-            // </iframe>`
-            // const old = document.getElementById('music_box');
-            // old.style.zIndex = '3000';
-            // const spotify_box = document.getElementById('sb');
-            // old.id = 'old';
-            // old.style.animation = 'leave_l 0.3s';
-            // old.addEventListener('animationend', function () {
-            //     this.remove();
-            //     spotify_box.insertAdjacentHTML('beforeend', music_area);
-            // });
         }
     }
     function previoussong() {
@@ -448,36 +484,12 @@ document.addEventListener('DOMContentLoaded', function () {
             new_.style.zIndex = '3000';
             new_.hidden = false;
             new_.style.animation = 'in_r 0.3s';
-            // function handleAnimationEnd() {
-            //     old.hidden = true;
-            //     new_.style.zIndex = '2000';
-            //     new_.removeEventListener('animationend', handleAnimationEnd);
-            // }
-            // new_.addEventListener('animationend', handleAnimationEnd);
             setTimeout(function () {
                 old.hidden = true;
                 new_.style.zIndex = '2000';
                 new_.style.animation = 'none';
                 new_.removeEventListener('animationend', handleAnimationEnd);
             }, 300)
-            // const now = document.getElementById('music').innerText;
-            // let src_ = 0;
-            // if (now === '0') {
-            //     document.getElementById('music').innerText = '7';
-            //     src_ = music_data[7];
-            // } else {
-            //     document.getElementById('music').innerText = String(Number(now) - 1);
-            //     src_ = music_data[Number(now) - 1];
-            // }
-            // const music_area = `<iframe src="${src_}" width="100%"
-            //     height="152" frameborder="0" allowfullscreen=""
-            //     allow="autoplay; clipboard-write; encrypted-media; 
-            //     fullscreen; picture-in-picture" id="music_box_new" style="z-index: 3000;" hidden onload="iframeLoaded()">
-            // </iframe>`
-
-            // const spotify_box = document.getElementById('sb');
-            // spotify_box.insertAdjacentHTML('beforeend', music_area);
-
 
         }
     }
@@ -517,13 +529,14 @@ document.addEventListener('DOMContentLoaded', function () {
         if (Math.abs(deltaX) < Math.abs(deltaY)) {
             if (deltaY > 30) {
 
-                if (page < 7) {
+                if (page < 8) {
                     isPageChanging = true
                     console.log('page:', page, 'isPageChanging:', isPageChanging)
                     clearpageUp();
                 }
             } else if (touchEndY - touchStartY > 30) {
                 if (page > 0) {
+                    console.log('c')
                     isPageChanging = true
                     clearpageDown();
                 }
@@ -536,5 +549,5 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-    changepage(); // 初始化第一頁
+    changepage();
 });
