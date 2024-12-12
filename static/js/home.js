@@ -281,49 +281,50 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`
             console.log('8')
             main.insertAdjacentHTML('beforeend', find_me);
-            const tourGuideImg = new Image();
-            tourGuideImg.src = './static/img/akua.png';
-            tourGuideImg.id = 'akua';
-            tourGuideImg.alt = 'tour';
-            tourGuideImg.className = 'tour-guide';
-            tourGuideImg.onload = function () {
-                main.appendChild(tourGuideImg);
-                const text_box = CreateOneLineTextBox('今天就到這裡囉，應該沒有爛尾吧');
-                setTimeout(function () {
-                    main.insertAdjacentHTML('beforeend', text_box);
-                }, 2000);
-            };
-            setTimeout(function () {
-                const sea = new Image();
-                sea.src = './static/img/sea.png';
-                sea.id = 'sea';
-                sea.alt = 'sea';
-                sea.className = 'sea';
-                main.appendChild(sea);
-                sea.onload = function () {
-                    const akua = document.getElementById('akua');
-                    akua.style.animation = 'akua 1s cubic-bezier(0.5, 0, 1, 1)';
-                    const text_box = document.querySelector('.text-box_oneLine');
-                    text_box.style.animation = 'akua 1s cubic-bezier(0.5, 0, 1, 1)';
-                    akua.addEventListener('animationend', function () {
-                        akua.remove();
-                        text_box.remove();
-                        sea.remove();
-                    })
-                }
-            }, 6000)
-            setTimeout(function () {
-                const ft_ = `<div class="finally_text">
+            // const tourGuideImg = new Image();
+            // tourGuideImg.src = './static/img/akua.png';
+            // tourGuideImg.id = 'akua';
+            // tourGuideImg.alt = 'tour';
+            // tourGuideImg.className = 'tour-guide';
+            // tourGuideImg.onload = function () {
+            //     main.appendChild(tourGuideImg);
+            //     const text_box = CreateOneLineTextBox('今天就到這裡囉，應該沒有爛尾吧');
+            //     setTimeout(function () {
+            //         main.insertAdjacentHTML('beforeend', text_box);
+            //     }, 2000);
+            // };
+            // setTimeout(function () {
+            //     const sea = new Image();
+            //     sea.src = './static/img/sea.png';
+            //     sea.id = 'sea';
+            //     sea.alt = 'sea';
+            //     sea.className = 'sea';
+            //     main.appendChild(sea);
+            //     sea.onload = function () {
+            //         const akua = document.getElementById('akua');
+            //         akua.style.animation = 'akua 1s cubic-bezier(0.5, 0, 1, 1)';
+            //         const text_box = document.querySelector('.text-box_oneLine');
+            //         text_box.style.animation = 'akua 1s cubic-bezier(0.5, 0, 1, 1)';
+            //         akua.addEventListener('animationend', function () {
+            //             akua.remove();
+            //             text_box.remove();
+            //             sea.remove();
+            //         })
+            //     }
+            // }, 6000)
+            // setTimeout(function () {
+            const ft_ = `<div class="finally_text">
                 完
             </div>`
-                main.insertAdjacentHTML('beforeend', ft_);
-                function End() {
-                    isPageChanging = false;
-                    ft.removeEventListener('animationend', handleAnimationEnd);
-                }
-                const ft = document.querySelector('.finally_text');
-                ft.addEventListener('animationend', End);
-            }, 7500)
+            main.insertAdjacentHTML('beforeend', ft_);
+            function End() {
+                isPageChanging = false;
+                ft.removeEventListener('animationend', handleAnimationEnd);
+            }
+            const ft = document.querySelector('.finally_text');
+            ft.addEventListener('animationend', End);
+            // }, 7500)
+
 
         }
     }
