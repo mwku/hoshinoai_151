@@ -1,4 +1,4 @@
-let page = 0;
+let page = 6;
 let isplay = false;
 let isask = false;
 let ismusic = false;
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <br>
                                     聲優:${data_id_card[i].ver}
                                     <br>
-                                    <p style="font-family: 'Segoe Script', 'Dancing Script', cursive; font-style: italic;">${data_id_card[i].text}</p>
+                                    <p style="font-family: 'Dancing Script', 'Bradley Hand', 'Brush Script MT', cursive; font-style: italic;">${data_id_card[i].text}</p>
                                 </div>
                             </div>`;  
                     }
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <br>
                                     聲優:${data_id_card[i].ver}
                                     <br>
-                                    <p style="font-family: 'Segoe Script', 'Dancing Script', cursive; font-style: italic;">${data_id_card[i].text}</p>
+                                    <p style="font-family: 'Dancing Script', 'Bradley Hand', 'Brush Script MT', cursive; font-style: italic;">${data_id_card[i].text}</p>
                                 </div>
                             </div>`;
                     }
