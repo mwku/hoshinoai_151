@@ -1,4 +1,4 @@
-let page = 0;
+let page = 6;
 let isplay = false;
 let isask = false;
 let ismusic = false;
@@ -13,19 +13,19 @@ const data_id_card=[
     {'photo_path':'./static/img/hina.jpg','background':' #f2d3db','name':'蝶野&nbsp;雛',
         'birthday':'3/2','from':'アオのハコ','ver':'鬼頭明里','text':'私は１人で戦わないと。１人で平気だもん。'},
     {'photo_path':'./static/img/uika.jpg','background':" #b79cd9",'name':'三角&nbsp;初音',
-        'birthday':'6/26','from':'Ave&nbsp;Mujica','ver':'佐佐木李子','text':'小祥小祥小祥小祥小祥小祥小祥'},
+        'birthday':'6/26','from':'Ave&nbsp;Mujica','ver':'佐々木李子','text':'小祥小祥小祥小祥小祥小祥小祥'},
     {'photo_path':'./static/img/cat.jpg','background':" #4a7c59",'name':'貓貓',
         'birthday':'不詳','from':'薬屋のひとりごと','ver':'悠木碧','text':'運命にはあらがうことはできない。'},
     {'photo_path':'./static/img/saki.jpg','background':" #bcc3de",'name':'豐川&nbsp;祥子',
         'birthday':'2/14','from':'Ave&nbsp;Mujica','ver':'高尾奏音','text':'私たちは運命共同体。'},
     {'photo_path':'./static/img/hatsumi.png','background':" #c7d8c6",'name':'若葉&nbsp;睦',
-        'birthday':'1/14','from':'Ave&nbsp;Mujica','ver':'渡瀨結月','text':'健康によくない'},
+        'birthday':'1/14','from':'Ave&nbsp;Mujica','ver':'渡瀬結月','text':'健康によくない'},
     {'photo_path':'./static/img/ano.jpg','background':" #ff8899",'name':'千早&nbsp;愛音',
         'birthday':'9/8','from':'MyGo!!!!!','ver':'立石凜','text':'我愛慕虛榮啦'},
     {'photo_path':'./static/img/soyo.jpg','background':" #ffdd77",'name':'長崎&nbsp;そよ',
         'birthday':'5/27','from':'MyGo!!!!!','ver':'小日向美香','text':'なんで春日影やったの？！！'},
     {'photo_path':'./static/img/ailysa.jpg','background':' #e6e6fa','name':'艾莉莎·米哈伊羅夫納·九條',
-    'birthday':'11/7','from':'不時輕聲地以俄語<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;遮羞的鄰座艾莉同學','ver':'上坂菫','text':'И на меня тоже обрати внимание.'},
+    'birthday':'11/7','from':'不時輕聲地以俄語<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;遮羞的鄰座艾莉同學','ver':'上坂すみれ','text':'И на меня тоже обрати внимание.'},
 ];
 const data_music=['7ovUcF5uHTBRzUpB6ZOmvt','0T4AitQuq8IJhWBWuZwkFA','3dPtXHP0oXQ4HCWHsOA9js','62Lv9WcrfzJqhvYDbilJy3','5ptl2PXkiSth54HCuGO7vN','5NxmDq0yXBYGfCbMqvIXuv','42lDvdAmBr7H5hLzvr882L','43DrDpSiIZWEiEfsQQHoQi'];
 function playAudio() {
