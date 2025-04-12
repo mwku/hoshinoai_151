@@ -5,16 +5,29 @@ let ismusic = false;
 let playing = false;
 const audio = new Audio('./static/mp3/idol.mp3');
 audio.loop = true;
-// const music_data = [
-//     'https://open.spotify.com/embed/track/7ovUcF5uHTBRzUpB6ZOmvt?utm_source=generator',
-//     'https://open.spotify.com/embed/track/0T4AitQuq8IJhWBWuZwkFA?utm_source=generator',
-//     'https://open.spotify.com/embed/track/3dPtXHP0oXQ4HCWHsOA9js?utm_source=generator',
-//     'https://open.spotify.com/embed/track/62Lv9WcrfzJqhvYDbilJy3?utm_source=generator',
-//     'https://open.spotify.com/embed/track/5ptl2PXkiSth54HCuGO7vN?utm_source=generator',
-//     `https://open.spotify.com/embed/track/5NxmDq0yXBYGfCbMqvIXuv?utm_source=generator`,
-//     `https://open.spotify.com/embed/track/42lDvdAmBr7H5hLzvr882L?utm_source=generator`,
-//     `https://open.spotify.com/embed/track/43DrDpSiIZWEiEfsQQHoQi?utm_source=generator`
-// ];
+const data_id_card=[
+    {'photo_path':'./static/img/igicon.jpg','background':' #e5698e','name':'星野&nbsp;愛',
+    'birthday':'不詳','from':'【推しの子】','ver':'高橋李依','text':'嘘はとびきりの愛なん<br>だよ。'},
+    {'photo_path':'./static/img/chinatsu.jpg','background':' #93c2e7','name':'鹿野&nbsp;千夏',
+        'birthday':'8/26','from':'アオのハコ','ver':'上田麗奈','text':'だったらプレーで実力見せつけるしかないんだよね。'},
+    {'photo_path':'./static/img/hina.jpg','background':' #f2d3db','name':'蝶野&nbsp;雛',
+        'birthday':'3/2','from':'アオのハコ','ver':'鬼頭明里','text':'私は１人で戦わないと。１人で平気だもん。'},
+    {'photo_path':'./static/img/uika.jpg','background':" #b79cd9",'name':'三角&nbsp;初音',
+        'birthday':'6/26','from':'Ave&nbsp;Mujica','ver':'佐佐木李子','text':'小祥小祥小祥小祥小祥小祥小祥'},
+    {'photo_path':'./static/img/cat.jpg','background':" #4a7c59",'name':'貓貓',
+        'birthday':'不詳','from':'薬屋のひとりごと','ver':'悠木碧','text':'運命にはあらがうことはできない。'},
+    {'photo_path':'./static/img/saki.jpg','background':" #bcc3de",'name':'豐川&nbsp;祥子',
+        'birthday':'2/14','from':'Ave&nbsp;Mujica','ver':'高尾奏音','text':'私たちは運命共同体。'},
+    {'photo_path':'./static/img/hatsumi.png','background':" #c7d8c6",'name':'若葉&nbsp;睦',
+        'birthday':'1/14','from':'Ave&nbsp;Mujica','ver':'渡瀨結月','text':'健康によくない'},
+    {'photo_path':'./static/img/ano.jpg','background':" #ff8899",'name':'千早&nbsp;愛音',
+        'birthday':'9/8','from':'MyGo!!!!!','ver':'立石凜','text':'我愛慕虛榮啦'},
+    {'photo_path':'./static/img/soyo.jpg','background':" #ffdd77",'name':'長崎&nbsp;そよ',
+        'birthday':'5/27','from':'MyGo!!!!!','ver':'小日向美香','text':'なんで春日影やったの？！！'},
+    {'photo_path':'./static/img/ailysa.jpg','background':' #e6e6fa','name':'艾莉莎·米哈伊羅夫納·九條',
+    'birthday':'11/7','from':'不時輕聲地以俄語<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;遮羞的鄰座艾莉同學','ver':'上坂菫','text':'И на меня тоже обрати внимание.'},
+];
+const data_music=['7ovUcF5uHTBRzUpB6ZOmvt','0T4AitQuq8IJhWBWuZwkFA','3dPtXHP0oXQ4HCWHsOA9js','62Lv9WcrfzJqhvYDbilJy3','5ptl2PXkiSth54HCuGO7vN','5NxmDq0yXBYGfCbMqvIXuv','42lDvdAmBr7H5hLzvr882L','43DrDpSiIZWEiEfsQQHoQi'];
 function playAudio() {
     audio.play().then(() => {
         document.removeEventListener('pointerdown', playAudio);
@@ -178,12 +191,62 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         }
         else if (page === 6) {
-            const ai = new Image();
-            ai.src = './static/img/ai.png';
-            ai.alt = 'hoshinoai';
-            ai.className = 'ai';
-            ai.onload = function () {
-                main.appendChild(ai);
+                
+                let div=document.createElement('div');
+                    // <div class="cards">
+                div.className='cards';
+                div.id='cards';
+                main.appendChild(div);
+                for(let i=0;i<data_id_card.length;i++){
+                    let e='';
+                    if(i>0){
+                        e=`<div class="id-card" style="background-color: ${data_id_card[i].background};" id="${i}" hidden>
+                                <div class="id-card-left">
+                                    <div class="id-card-photo" style="background-image: url(${data_id_card[i].photo_path});">
+                                    </div>
+                                    <div class="id-card-name">
+                                        ${data_id_card[i].name}
+                                    </div>
+                                </div>
+                                <div class="id-card-script-text">
+                                    生日:${data_id_card[i].birthday}
+                                    <br>
+                                    原作:${data_id_card[i].from}
+                                    <br>
+                                    聲優:${data_id_card[i].ver}
+                                    <br>
+                                    <p style="font-family: 'Segoe Script', 'Dancing Script', cursive; font-style: italic;">${data_id_card[i].text}</p>
+                                </div>
+                            </div>`;  
+                    }
+                    else{
+                        e=`<div class="id-card" style="background-color: ${data_id_card[i].background};" id="${i}">
+                                <div class="id-card-left">
+                                    <div class="id-card-photo" style="background-image: url(${data_id_card[i].photo_path});">
+                                    </div>
+                                    <div class="id-card-name">
+                                        ${data_id_card[i].name}
+                                    </div>
+                                </div>
+                                <div class="id-card-script-text">
+                                    生日:${data_id_card[i].birthday}
+                                    <br>
+                                    原作:${data_id_card[i].from}
+                                    <br>
+                                    聲優:${data_id_card[i].ver}
+                                    <br>
+                                    <p style="font-family: 'Segoe Script', 'Dancing Script', cursive; font-style: italic;">${data_id_card[i].text}</p>
+                                </div>
+                            </div>`;
+                    }
+                    let c=document.getElementById('cards');
+                    c.insertAdjacentHTML('beforeend',e);
+                }
+                const atentiontext = `<div class="atention_text_id-card" id="atention_text">
+                                        左右滑動切換角色
+                                    </div>
+                                    <div hidden id="counter">0</div>`
+                main.insertAdjacentHTML('beforeend', atentiontext);
                 const tourGuideImg = new Image();
                 tourGuideImg.src = './static/img/tour.png';
                 tourGuideImg.alt = 'tour';
@@ -196,7 +259,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         isPageChanging = false;
                     }, 2000);
                 };
-            };
         }
         else if (page === 7) {
             if (ismusic && playing) {
@@ -208,42 +270,24 @@ document.addEventListener('DOMContentLoaded', function () {
              class="spotify_icon" id="spotify_icon" href="https://open.spotify.com/artist/64tJ2EAv1R6UaZqc4iOCyj"
              target="_blank"></a>`
             main.insertAdjacentHTML('beforeend', spotify_icon);
-            const music_area = `<div class="spotify_box" id="sb">
-                                    <iframe src="https://open.spotify.com/embed/track/7ovUcF5uHTBRzUpB6ZOmvt?utm_source=generator" width="100%"
-                                        height="152" frameborder="0" allowfullscreen=""
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="0">
-                                    </iframe>
-                                    <iframe src="https://open.spotify.com/embed/track/0T4AitQuq8IJhWBWuZwkFA?utm_source=generator" width="100%"
-                                        height="152" frameborder="0" allowfullscreen=""
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="1" hidden>
-                                    </iframe>
-                                    <iframe src="https://open.spotify.com/embed/track/3dPtXHP0oXQ4HCWHsOA9js?utm_source=generator" width="100%"
-                                        height="152" frameborder="0" allowfullscreen=""
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="2" hidden>
-                                    </iframe>
-                                    <iframe src="https://open.spotify.com/embed/track/62Lv9WcrfzJqhvYDbilJy3?utm_source=generator" width="100%"
-                                        height="152" frameborder="0" allowfullscreen=""
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="3" hidden>
-                                    </iframe>
-                                    <iframe src="https://open.spotify.com/embed/track/5ptl2PXkiSth54HCuGO7vN?utm_source=generator" width="100%"
-                                        height="152" frameborder="0" allowfullscreen=""
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="4" hidden>
-                                    </iframe>
-                                    <iframe src="https://open.spotify.com/embed/track/5NxmDq0yXBYGfCbMqvIXuv?utm_source=generator" width="100%"
-                                        height="152" frameborder="0" allowfullscreen=""
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="5" hidden>
-                                    </iframe>
-                                    <iframe src="https://open.spotify.com/embed/track/42lDvdAmBr7H5hLzvr882L?utm_source=generator" width="100%"
-                                        height="152" frameborder="0" allowfullscreen=""
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="6" hidden>
-                                    </iframe>
-                                    <iframe src="https://open.spotify.com/embed/track/43DrDpSiIZWEiEfsQQHoQi?utm_source=generator" width="100%"
-                                        height="152" frameborder="0" allowfullscreen=""
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="7" hidden>
-                                    </iframe>
-                                </div>
-                                <div hidden id="music">0</div>`
+            
+            let music_area='';
+            for(let i=0;i<data_music.length;i++){
+                if(i===0){
+                    music_area+=`<iframe src="https://open.spotify.com/embed/track/${data_music[i]}?utm_source=generator" width="100%"
+                                    height="152" frameborder="0" allowfullscreen=""
+                                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="${i}">
+                                </iframe>`}
+                else{
+                    music_area+=`<iframe src="https://open.spotify.com/embed/track/${data_music[i]}?utm_source=generator" width="100%"
+                                    height="152" frameborder="0" allowfullscreen=""
+                                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id="${i}" hidden>
+                                </iframe>`
+                }
+            }
+            music_area = '<div class="spotify_box" id="sb">'+music_area+'</div>'+'<div hidden id="music">0</div>'
             main.insertAdjacentHTML('beforeend', music_area);
+            // console.log(music_area)
             const atentiontext = `<div class="atention_text" id="atention_text">
                                         左右滑動切換歌曲
                                     </div>`
@@ -329,9 +373,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     function clearpageUp() {
+        const h_=document.getElementById('counter')
         const h = document.getElementById('music');
         if (h) {
             h.remove();
+        }
+        if(h_){
+            h_.remove();
         }
         const childElements = Array.from(main.children);
         let elementsToRemove = childElements.length;
@@ -403,9 +451,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         else {
             page++;
+            const h_ = document.getElementById('counter')
             const h = document.getElementById('music');
             if (h) {
                 h.remove();
+            }
+            if (h_) {
+                h_.remove();
             }
             for (let i = 0; i < childElements.length; i++) {
                 const element = childElements[i];
@@ -422,9 +474,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     function clearpageDown() {
+        const h_ = document.getElementById('counter')
         const h = document.getElementById('music');
         if (h) {
             h.remove();
+        }
+        if(h_){
+            h_.remove();
         }
         const childElements = Array.from(main.children);
         let elementsToRemove = childElements.length;
@@ -448,6 +504,55 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function nextcard() {
+        if (page === 6) {
+            const at = document.getElementById('atention_text')
+            if (at) {
+                at.remove();
+            }
+            const now = document.getElementById('counter').innerText;
+            const old = document.getElementById(now);
+            const new_ = document.getElementById(String((Number(now) + 1) % data_id_card.length));
+            // console.log(now, new_, old,typeof(now),(Number(now) + 1) % data_id_card.length)
+            old.style.zIndex = '3000';
+            new_.hidden = false;
+            old.style.animation = 'leave_l 0.3s';
+            setTimeout(function () {
+                old.style.zIndex = '2000';
+                old.hidden = true;
+                old.style.animation = 'none';
+                document.getElementById('counter').innerText = String((Number(now) + 1) % data_id_card.length);
+            }, 300)
+        }
+    }
+
+    function previouscard() {
+        if (page === 6) {
+            const at = document.getElementById('atention_text')
+            if (at) {
+                at.remove();
+            }
+            const now = document.getElementById('counter').innerText;
+            const old = document.getElementById(now);
+            let new_ = document.getElementById(Number(now) - 1);
+            document.getElementById('counter').innerText = String(Number(now) - 1);
+            if (Number(now) === 0) {
+                new_ = document.getElementById(String(data_id_card.length - 1));
+                document.getElementById('counter').innerText = String(data_id_card.length - 1);
+            }
+            // console.log(now, new_, old,typeof(now))
+            new_.style.zIndex = '3000';
+            new_.hidden = false;
+            new_.style.animation = 'in_r 0.3s';
+            setTimeout(function () {
+                old.hidden = true;
+                new_.style.zIndex = '2000';
+                new_.style.animation = 'none';
+                new_.removeEventListener('animationend', handleAnimationEnd);
+            }, 300)
+        }
+    }
+
     function nextsong() {
         if (page === 7) {
             const at = document.getElementById('atention_text')
@@ -456,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             const now = document.getElementById('music').innerText;
             const old = document.getElementById(now);
-            const new_ = document.getElementById((Number(now) + 1) % 8);
+            const new_ = document.getElementById(String((Number(now) + 1) % data_music.length));
             old.style.zIndex = '3000';
             new_.hidden = false;
             old.style.animation = 'leave_l 0.3s';
@@ -464,7 +569,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 old.style.zIndex = '2000';
                 old.hidden = true;
                 old.style.animation = 'none';
-                document.getElementById('music').innerText = String((Number(now) + 1) % 8);
+                document.getElementById('music').innerText = String((Number(now) + 1) % data_music.length);
             }, 300)
         }
     }
@@ -479,8 +584,8 @@ document.addEventListener('DOMContentLoaded', function () {
             let new_ = document.getElementById(Number(now) - 1);
             document.getElementById('music').innerText = String(Number(now) - 1);
             if (Number(now) === 0) {
-                new_ = document.getElementById('7');
-                document.getElementById('music').innerText = '7';
+                new_ = document.getElementById(String(data_music.length - 1));
+                document.getElementById('music').innerText = String(data_music.length - 1);
             }
             new_.style.zIndex = '3000';
             new_.hidden = false;
@@ -491,7 +596,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 new_.style.animation = 'none';
                 new_.removeEventListener('animationend', handleAnimationEnd);
             }, 300)
-
         }
     }
 
@@ -541,6 +645,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     isPageChanging = true
                     clearpageDown();
                 }
+            }
+        }else if(page==6){
+            if (deltaX > 30) {
+                nextcard();
+            } else if (deltaX < -30) {
+                previouscard();
             }
         } else if (page === 7) {
             if (deltaX > 30) {
