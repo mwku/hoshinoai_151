@@ -644,6 +644,71 @@ img {
         1px 1px 0 #000;
 }
 
+.cards{
+    position: absolute;
+    top: 150px;
+    /* left: 50%; */
+    height: 175px;
+    width: 300px;
+    animation: TourGuide 2s;
+}
+
+.id-card{
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: auto;
+    width: 300px;
+    height: 175px;
+    border-radius: 15px;
+}
+.id-card-left{
+    z-index: 1001;
+    position: absolute;
+    height: 175px;
+    width: 100px;
+    top:0;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.id-card-photo{
+    z-index: 1001;
+    position: absolute;
+    top: 25px;
+    height: 100px;
+    width: 80px;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+.id-card-name{
+    z-index: 1001;
+    position: absolute;
+    top: 127px;
+    /* left: 30px; */
+    font-size: 15px;
+    font-family:'Yu Gothic', 'Yu Gothic Medium', 'Yu Gothic Regular', YuGothic ;    
+    color: #000;
+    text-decoration: underline;
+}
+
+.atention_text_id-card {
+    z-index: 1000;
+    position: absolute;
+    top: 230px;
+    left: auto;
+    width: auto;
+    height: 250px;
+    animation: TourGuide 2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #eeee00;
+}
+
 .spotify_icon {
     z-index: 1000;
     background-image: url(../img/yoasobi.jpg);
@@ -657,6 +722,21 @@ img {
     height: 150px;
     animation: TourGuide 2s;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+.id-card-script-text{
+    z-index: 1000;
+    position: absolute;
+    top: 25px;
+    left: 130px;
+    width: auto;
+    /* height: 250px; */
+    /* animation: TourGuide 2s; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 15px;
+    /* text-decoration: underline; */
 }
 
 .spotify_box {
