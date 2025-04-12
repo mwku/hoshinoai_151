@@ -357,9 +357,9 @@ document.addEventListener('DOMContentLoaded', function () {
             //     }
             // }, 6000)
             // setTimeout(function () {
-            const ft_ = `<div class="finally_text">
-                完
-            </div>`
+            const ft_ = `<a href="https://github.com/mwku/hoshinoai_151" class="finally_text" target="_blank">
+                Design&nbsp;by<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-mwku
+            </a>`
             main.insertAdjacentHTML('beforeend', ft_);
             function End() {
                 isPageChanging = false;
