@@ -1,4 +1,4 @@
-let page = 0;
+let page = 6;
 let isplay = false;
 let isask = false;
 let ismusic = false;
@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function () {
             Decline.addEventListener('click', function () {
                 isask = true;
                 isPageChanging = false;
-                ask.style.animation = 'leave-up 2s';
+                ask.style.animation = 'leave-up 1s';
                 clearpageUp();
                 setTimeout(function () {
                     ask.remove();
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 isask = true;
                 isPageChanging = false;
                 ismusic = true;
-                ask.style.animation = 'leave-up 2s';
+                ask.style.animation = 'leave-up 1s';
                 clearpageUp();
                 setTimeout(function () {
                     ask.remove();
@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             for (let i = 0; i < childElements.length; i++) {
                 const element = childElements[i];
-                element.style.animation = 'leave-up 2s';
+                element.style.animation = 'leave-up 1s';
                 element.addEventListener('animationend', function () {
                     this.remove();
                     elementsToRemove--;
@@ -492,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         for (let i = 0; i < childElements.length; i++) {
             const element = childElements[i];
-            element.style.animation = 'leave-down 2s';
+            element.style.animation = 'leave-down 1s';
             element.addEventListener('animationend', function () {
                 this.remove();
                 elementsToRemove--;
