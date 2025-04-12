@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 clearpageUp();
                 setTimeout(function () {
                     ask.remove();
-                }, 2000)
+                }, 1000)
             });
             accept.addEventListener('click', function () {
                 isask = true;
@@ -424,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 clearpageUp();
                 setTimeout(function () {
                     ask.remove();
-                }, 2000)
+                }, 1000)
                 const playbutton_add = '<img src="./static/img/stop.png" id="PlayButton" class="PlayButton">'
                 document.body.insertAdjacentHTML('beforeend', playbutton_add);
                 let play = true;
