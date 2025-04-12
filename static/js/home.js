@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     main.insertAdjacentHTML('beforeend', igname);
                     main.insertAdjacentHTML('beforeend', slide_up);
                     isPageChanging = false;
-                }, 2000);
+                }, 1500);
             };
         }
         else if (page === 1) {
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTimeout(function () {
                     main.insertAdjacentHTML('beforeend', text_box);
                     isPageChanging = false;
-                }, 2000);
+                }, 1000);
             };
         }
         else if (page === 2) {
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     setTimeout(function () {
                         main.insertAdjacentHTML('beforeend', text_box);
                         isPageChanging = false;
-                    }, 2000);
+                    }, 1000);
                 };
             };
         }
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     setTimeout(function () {
                         main.insertAdjacentHTML('beforeend', text_box);
                         isPageChanging = false;
-                    }, 2000);
+                    }, 1000);
                 };
             };
         }
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     setTimeout(function () {
                         main.insertAdjacentHTML('beforeend', text_box);
                         isPageChanging = false;
-                    }, 2000);
+                    }, 1000);
                 };
             };
         }
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTimeout(function () {
                     main.insertAdjacentHTML('beforeend', text_box);
                     isPageChanging = false;
-                }, 2000);
+                }, 1000);
             };
         }
         else if (page === 6) {
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     setTimeout(function () {
                         main.insertAdjacentHTML('beforeend', text_box);
                         isPageChanging = false;
-                    }, 2000);
+                    }, 1000);
                 };
         }
         else if (page === 7) {
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     main.insertAdjacentHTML('beforeend', text_box);
                     isPageChanging = false;
                     console.log(isPageChanging)
-                }, 2000);
+                }, 1000);
             };
         }
         else if (page === 8) {
@@ -404,8 +404,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const accept = document.getElementById('accept');
             const ask = document.getElementById('ask');
             cover_.addEventListener('click', function () {
-                isPageChanging = false;
+                // isask = true;
                 ask.remove();
+                isPageChanging = false;
+                
             })
             Decline.addEventListener('click', function () {
                 isask = true;
