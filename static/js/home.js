@@ -1,4 +1,4 @@
-let page = 6;
+let page = 0;
 let isplay = false;
 let isask = false;
 let ismusic = false;
