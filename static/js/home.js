@@ -6,7 +6,7 @@ let playing = false;
 const audio = new Audio('./static/mp3/idol.mp3');
 audio.loop = true;
 const data_id_card=[
-    {'photo_path':'./static/img/igicon.jpg','background':' #e5698e','name':'星野&nbsp;愛',
+    {'photo_path':'./static/img/hoshinoai.jpg','background':' #e5698e','name':'星野&nbsp;愛',
     'birthday':'不詳','from':'【推しの子】','ver':'高橋李依','text':'嘘はとびきりの愛なん<br>だよ。'},
     {'photo_path':'./static/img/chinatsu.jpg','background':' #93c2e7','name':'鹿野&nbsp;千夏',
         'birthday':'8/26','from':'アオのハコ','ver':'上田麗奈','text':'だったらプレーで実力見せつけるしかないんだよね。'},
