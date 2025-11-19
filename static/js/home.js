@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (page === 0) {
             const igicon = new Image();
-            igicon.src = './static/img/IMG_9464.jpeg';
+            igicon.src = './static/img/igicon.jpeg';
             igicon.alt = 'icon';
             igicon.className = 'igicon';
             igicon.onload = function () {
